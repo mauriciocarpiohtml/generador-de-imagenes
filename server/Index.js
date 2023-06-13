@@ -1,15 +1,21 @@
 const express = require('express')
 const cors = require('cors')
 const { Configuration, OpenAIApi } = require('openai')
+const dotenv = require('dotenv')
+
 
 const app = express()
+dotenv.config()
 app.use(cors())
 app.use(express.json())
 
+const PORT = process.env.PORT
+
 const configuration = new Configuration({
-    apiKey:'claveOpenAi'
+    apiKey:process.env.OPEN_AI_KEY
   })
   const openai = new OpenAIApi(configuration)
+
 
 app.post('/', async(req, res) => {
     try {
@@ -35,4 +41,4 @@ app.post('/', async(req, res) => {
     }  
 })
 
-app.listen(3053, () => console.log('Servidor funcionando correctamente en el puerto 3053'))
+app.listen(PORT, () => console.log(`Servidor funcionando correctamente en el puerto ${PORT}`))
