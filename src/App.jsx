@@ -7,7 +7,7 @@ function App() {
   
   async function crearImagenes(prompt){
     try {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}`, {
+      const response = await fetch('https://backend-generador-imagenes.vercel.app/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
